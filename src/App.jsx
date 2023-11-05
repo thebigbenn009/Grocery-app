@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Form from "./components/Form";
 import Items from "./components/Items";
+import { ToastContainer, toast } from "react-toastify";
 const setLocalStorage = (items) => {
   localStorage.setItem("list", JSON.stringify(items));
 };
@@ -15,6 +16,7 @@ const App = () => {
     };
     setItems([...items, newItem]);
     setLocalStorage([...items, newItem]);
+    toast.success("Item added to the list");
   };
   const editItem = (id) => {
     const newItems = items.map((item) => {
@@ -26,6 +28,7 @@ const App = () => {
     });
     setItems(newItems);
     setLocalStorage(newItems);
+    toast.success("Item deleted");
   };
   const removeItem = (id) => {
     const newItems = items.filter((item) => item.id !== id);
@@ -34,6 +37,7 @@ const App = () => {
   };
   return (
     <section className="section-center">
+      <ToastContainer position="top-center" />
       <Form addItem={addItem} />
       <Items items={items} removeItem={removeItem} editItem={editItem} />
     </section>
