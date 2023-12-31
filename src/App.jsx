@@ -2,6 +2,7 @@ import { useState } from "react";
 import Form from "./components/Form";
 import Items from "./components/Items";
 import { ToastContainer, toast } from "react-toastify";
+import ReactHk from "./components/ReactHk";
 const setLocalStorage = (items) => {
   localStorage.setItem("list", JSON.stringify(items));
 };
@@ -38,8 +39,9 @@ const App = () => {
   return (
     <section className="section-center">
       <ToastContainer position="top-center" />
-      <Form addItem={addItem} />
-      <Items items={items} removeItem={removeItem} editItem={editItem} />
+      <ReactHk />
+      {/* <Form addItem={addItem} />
+      <Items items={items} removeItem={removeItem} editItem={editItem} /> */}
     </section>
   );
 };
